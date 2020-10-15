@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
+import {useSelector} from "react-redux";
 
 function ListProducts() {
+    const products = useSelector((state) => state.myProduct.products);
 
     const myProducts = [
         {id: 1, name: "Samsung"},
@@ -8,7 +10,7 @@ function ListProducts() {
         {id: 3, name: "xiomi"}
     ];
 
-    const [products, setProducts] = useState(myProducts);
+     // const [products, setProducts] = useState(myProducts);
 
     useEffect(() => {
 
