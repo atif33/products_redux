@@ -1,18 +1,16 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect} from "react";
 import {useSelector} from "react-redux";
 
 function ListProducts() {
+    // get product in store
     const products = useSelector((state) => state.myProduct.products);
+     const contacts = useSelector((state) => state.myContact.contact);
 
-    const myProducts = [
-        {id: 1, name: "Samsung"},
-        {id: 2, name: "Iphone"},
-        {id: 3, name: "xiomi"}
-    ];
 
-     // const [products, setProducts] = useState(myProducts);
+    // const [products, setProducts] = useState(myProducts);
 
     useEffect(() => {
+        console.log('roro');
 
     });
 
@@ -25,6 +23,12 @@ function ListProducts() {
                         {product.name}
                     </li>
                 ))}
+                {contacts.map((contact) => (
+                    <li className="list-group-item" key={contact.id}>
+                        {contact.firstName +' '+ contact.lastName}
+                    </li>
+                ))}
+
             </ul>
         </div>
     )

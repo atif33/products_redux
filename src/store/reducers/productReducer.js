@@ -3,12 +3,14 @@ const initialState = {
 };
 
 const productReducers = (state = initialState, action) => {
+
     switch (action.type) {
         case 'ADD_PRODUCT':
             return {
-              ...state,
-              products: [...state.products, action.payload]
+                products: [...state.products, action.payload]
             };
+        case  'RESET_STORE':
+            return {products: [{}]}
         default:
             return state;
 

@@ -6,8 +6,8 @@ const Menu = () => {
 
     return (
         <nav className="navbar navbar-light bg-light">
-            {products.map((productId) => (
-                <a className="navbar-brand" href="#">Navbar ==>{productId.id}</a>
+            {products.map((productId, index) => (
+                <a className="navbar-brand" href="#" key={productId.id}>Navbar ==>{productId.id}</a>
             ))}
 
         </nav>

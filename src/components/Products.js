@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import addNewProduct from "../store/actions/productAction";
+import {addNewProduct, resetStoreProducts} from "../store/actions/productAction";
 
 export function Products() {
     const dispatch = useDispatch();
@@ -16,12 +16,20 @@ export function Products() {
 
     // arrow func
     const submitForm = (e) => {
+        console.log('Submit');
         e.preventDefault();
         product.id = Math.random() * 100;
         dispatch(addNewProduct(product));
     };
+
+    const resetStore = (event) => {
+        console.log('delete');
+        event.preventDefault();
+        dispatch(resetStoreProducts())
+
+    };
     return (
-        <form onSubmit={submitForm}>
+        <form>
             <div className="form-group">
                 <label className="">Product</label>
                 <input type="text" className="form-control"
@@ -29,8 +37,8 @@ export function Products() {
                        onChange={handleChange}
                        placeholder="Name of the product"/>
             </div>
-            {JSON.stringify(product)}
-            <button className="btn btn-success btn-block">Submit</button>
+            <button onClick={submitForm} className="btn btn-success">Submit</button>
+            <button onClick={resetStore} className="btn btn-danger">Delete</button>
         </form>
     )
 
